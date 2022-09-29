@@ -4,15 +4,19 @@ export const PokemonsContext = createContext({
   allPokemons: {},
   pokeDex: {},
   modalOpen: {},
+  description: {},
   setModalOpen: () => {},
-  setPokeDex: () => {}
+  setPokeDex: () => {},
+  Capitalize: () => {},
+  setDescription: () => {},
 });
 
 export const PokemonsProvider = ({ children }) => {
     const[allPokemons, setAllPokemons] = useState([])
     const [loadMore, setLoadMore] = useState('https://pokeapi.co/api/v2/pokemon?limit=20')
     const [pokeDex,setPokeDex]=useState()
-    const [modalOpen, setModalOpen] = useState(false);
+    const [description, setDescription] = useState([])
+    const [modalOpen, setModalOpen] = useState(false)
 
 
   const getAllPokemons = async () => {
@@ -29,18 +33,29 @@ export const PokemonsProvider = ({ children }) => {
         await allPokemons.sort((a, b) => a.id - b.id)
       })
     }
+
+    function createPokemonDescription(results)  {
+      results.forEach( async pokemon => {
+        const res = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemon.name}`)
+        const data =  await res.json()
+        setDescription( currentList => [...currentList, data])
+        await description.sort((a, b) => a.id - b.id)
+      })
+    }
     createPokemonObject(data.results)
-    console.log(allPokemons)
+    createPokemonDescription(data.results)
   }
-
-
 
  useEffect(() => {
   getAllPokemons()
  }, [])
 
+ const Capitalize = (str) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+  }
 
-  const value = { allPokemons,pokeDex,setPokeDex,modalOpen,setModalOpen };
+
+  const value = { allPokemons,pokeDex,setPokeDex,modalOpen,setModalOpen,Capitalize,description,setDescription};
   return (
     <PokemonsContext.Provider value={value}>
       {children}

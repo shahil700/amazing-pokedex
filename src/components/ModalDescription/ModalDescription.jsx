@@ -1,6 +1,6 @@
 
 import Pokeinfo from "../PokemonInfo/PokemonInfo";
-import "./ModalDescription.css";
+
 
 
 const Modal = () => {

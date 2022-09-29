@@ -2,7 +2,7 @@
 import PokemonCard from '../PokemonCard/PokemonCard';
 
 const PokemonList = ({pokemons}) => {
-
+ 
 
         
         return (<div className='pokemon-container'>
@@ -12,8 +12,8 @@ const PokemonList = ({pokemons}) => {
                                 id={pokemonStats.id}
                                 image={pokemonStats.sprites.other.dream_world.front_default}
                                 name={pokemonStats.name}
-                                type={pokemonStats.types[0].type.name}
-                                //types={pokemonStats.types}                            
+                                typess={pokemonStats.types}
+                                color={pokemonStats.types[0].type.name}                            
                                 pokemon={pokemonStats}
                                 />)}</div></div>);
         

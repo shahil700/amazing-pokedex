@@ -1,0 +1,41 @@
+.modal {
+    position : fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(46, 49, 86, 0.9);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content{
+    width: 756px;
+    left: 378px;
+    background: #DEEDED;
+}
+
+.modal-header, .modal-footer{
+    display: flex;
+    padding: 10px;
+}
+
+.modal-body{
+    display: flex;
+    padding: 10px;
+}
+
+.image{
+    display: flex;
+    height: 277px;
+    width: 199px;
+    border: 1px dashed #2E3156;
+    border-radius: 8px;
+}
+
+.description{
+    font-size: 10px;
+}
+
