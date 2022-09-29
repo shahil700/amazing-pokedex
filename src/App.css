@@ -1,38 +1,162 @@
-.App {
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #deeded;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.normal {
+  background-color: #ddcbd0;
+}
+.fighting {
+  background-color: #fcc1b0;
+}
+.flying {
+  background-color: #82d2e8;
+}
+.poison {
+  background-color: #cfb7ed;
+}
+.ground {
+  background-color: #f4d1a6;
+}
+.rock {
+  background-color: #c5aea8;
+}
+.bug {
+  background-color: #c1e0c8;
+}
+.ghost {
+  background-color: #d7c2d7;
+}
+.steel {
+  background-color: #c2d4ce;
+}
+.fire {
+  background-color: #edc2c4;
+}
+.water {
+  background-color: #cbd5ed;
+}
+.grass {
+  background-color: #c0d4c8;
+}
+.electric {
+  background-color: #e2e2a0;
+}
+.psychic {
+  background-color: #ddc0cf;
+}
+.ice {
+  background-color: #c7d7df;
+}
+.dragon {
+  background-color: #cadcdf;
+}
+.dark {
+  background-color: #c6c5e3;
+}
+.fairy {
+  background-color: #e4c0cf;
+}
+.unknown {
+  background-color: #c0dfdd;
+}
+.shadow {
+  background-color: #cacaca;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  min-height: 100vh;
+  padding: 3rem 0.5rem;
+}
+.pokemon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.all-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.thumb-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 0 ;
+  margin: 0.3rem;
+  border: 1px dashed #2E3156;
+  border-radius: 8px;
+  min-width: 160px;
+  text-align: center;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.089);
+}
+h3 {
+  margin-bottom: 0.2rem;
+}
+.thumb-container .number {
+  border-radius: 1rem;
+  padding: 0.2rem 0.4rem;
+  background-color: rgba(255,255,255,0.3);
+}
+.thumb-container img {
+  width: 120px;
+  height: 120px;
+}
+.thumb-container small {
+  text-transform: capitalize;
+}
+.detail-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.detail-wrapper button {
+  color: rgb(22, 22, 22);
+  padding: .5rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.185);
+}
+
+
+
+.filter{
+    -webkit-appearance: none;
+    margin-left: 20px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    padding: 10px;
+    width: 194px;
+    height: 57px;
+    margin-bottom: 30px;
+    background-color: #c9dde2;
+}
+
+.app-container .openModalBtn {
+  width: 200px;
+  height: 40px;
+  border: none;
+  border-radius: 6px;
+  background-color: cornflowerblue;
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  cursor: pointer;
 }
