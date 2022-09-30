@@ -13,7 +13,7 @@ export const PokemonsContext = createContext({
 
 export const PokemonsProvider = ({ children }) => {
     const[allPokemons, setAllPokemons] = useState([])
-    const [loadMore, setLoadMore] = useState('https://pokeapi.co/api/v2/pokemon?limit=20')
+    const [loadMore, setLoadMore] = useState('https://pokeapi.co/api/v2/pokemon?limit=25')
     const [pokeDex,setPokeDex]=useState()
     const [description, setDescription] = useState([])
     const [modalOpen, setModalOpen] = useState(false)
@@ -30,7 +30,7 @@ export const PokemonsProvider = ({ children }) => {
         const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`)
         const data =  await res.json()
         setAllPokemons( currentList => [...currentList, data])
-        await allPokemons.sort((a, b) => a.id - b.id)
+        await allPokemons.sort((a, b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0))
       })
     }
 
@@ -39,7 +39,7 @@ export const PokemonsProvider = ({ children }) => {
         const res = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemon.name}`)
         const data =  await res.json()
         setDescription( currentList => [...currentList, data])
-        await description.sort((a, b) => a.id - b.id)
+        await description.sort((a, b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0))
       })
     }
     createPokemonObject(data.results)

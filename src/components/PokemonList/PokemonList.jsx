@@ -12,8 +12,7 @@ const PokemonList = ({pokemons}) => {
                                 id={pokemonStats.id}
                                 image={pokemonStats.sprites.other.dream_world.front_default}
                                 name={pokemonStats.name}
-                                typess={pokemonStats.types}
-                                color={pokemonStats.types[0].type.name}                            
+                                typess={pokemonStats.types}                            
                                 pokemon={pokemonStats}
                                 />)}</div></div>);
         

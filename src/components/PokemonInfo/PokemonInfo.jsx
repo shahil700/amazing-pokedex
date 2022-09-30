@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { PokemonsContext } from "../../PokemonContexts/PokemonContext"
+import { colorTypeGradients } from '../../utils/util.js'
 import './PokemonInfo.css'
 
 
@@ -9,13 +10,12 @@ const Pokeinfo = () => {
     console.log(pokeDex)
     console.log(description[pokeDex.id])
 
-    function removeDuplicates(arr) {
-        var unique = arr.reduce(function (acc, curr) {
-            if (!acc.includes(curr))
-                acc.push(curr);
-            return acc;
-        }, []);
-        return unique;
+    let finalColor;
+
+    if (pokeDex.types.length === 2) {
+        finalColor = colorTypeGradients(pokeDex.types[0].type.name, pokeDex.types[1].type.name, pokeDex.types.length);
+    } else {
+        finalColor = colorTypeGradients(pokeDex.types[0].type.name, pokeDex.types[0].type.name, pokeDex.types.length);
     }
    
     return (
@@ -24,7 +24,7 @@ const Pokeinfo = () => {
                 <div className='modal-content'onClick={ e => e.stopPropagation()}>
                     <div className="modal-header">
                         <h1>{Capitalize(pokeDex.name)}</h1>
-                        <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokeDex.id}.svg`} alt="" className="image"/>
+                        <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokeDex.id}.svg`} alt="" className="image" style={{ background: `linear-gradient(${finalColor[0]}, ${finalColor[1]})` }}/>
                         <div className="description">
                             {
                               description[pokeDex.id].flavor_text_entries.map((poke) => {

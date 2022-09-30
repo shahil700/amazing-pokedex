@@ -11,68 +11,6 @@ body {
 }
 
 
-.normal {
-  background-color: #ddcbd0;
-}
-.fighting {
-  background-color: #fcc1b0;
-}
-.flying {
-  background-color: #82d2e8;
-}
-.poison {
-  background-color: #cfb7ed;
-}
-.ground {
-  background-color: #f4d1a6;
-}
-.rock {
-  background-color: #c5aea8;
-}
-.bug {
-  background-color: #c1e0c8;
-}
-.ghost {
-  background-color: #d7c2d7;
-}
-.steel {
-  background-color: #c2d4ce;
-}
-.fire {
-  background-color: #edc2c4;
-}
-.water {
-  background-color: #cbd5ed;
-}
-.grass {
-  background-color: #c0d4c8;
-}
-.electric {
-  background-color: #e2e2a0;
-}
-.psychic {
-  background-color: #ddc0cf;
-}
-.ice {
-  background-color: #c7d7df;
-}
-.dragon {
-  background-color: #cadcdf;
-}
-.dark {
-  background-color: #c6c5e3;
-}
-.fairy {
-  background-color: #e4c0cf;
-}
-.unknown {
-  background-color: #c0dfdd;
-}
-.shadow {
-  background-color: #cacaca;
-}
-
-
 .app-container {
   display: flex;
   flex-direction: column;

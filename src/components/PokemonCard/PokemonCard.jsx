@@ -1,29 +1,32 @@
 
 import { useContext } from "react";
 import { PokemonsContext } from "../../PokemonContexts/PokemonContext";
+import { colorTypeGradients } from '../../utils/util.js'
 
 
-const PokemonCard = ({id, image, name, typess,color,pokemon }) => {
+const PokemonCard = ({id, image, name, typess,pokemon }) => {
 
     const {setPokeDex,setModalOpen,Capitalize} =useContext(PokemonsContext)
 
+    let finalColor;
 
-    const style = color + " thumb-container"; 
+    if (typess.length === 2) {
+        finalColor = colorTypeGradients(typess[0].type.name, typess[1].type.name, typess.length);
+    } else {
+        finalColor = colorTypeGradients(typess[0].type.name, typess[0].type.name, typess.length);
+    }
 
     return (
-        <div className={style} onClick={()=>{
+    <div className=" thumb-container" style={{ background: `linear-gradient(${finalColor[0]}, ${finalColor[1]})` }}
+            onClick={()=>{
             setPokeDex(pokemon);
             setModalOpen(true); 
         }}>
-            <div className="number"><small>0{id}</small></div>
             <img src={image} alt={name} />
             <div className="detail-wrapper">
                 <h3>{Capitalize(name)}</h3>
-                {typess.map((types) =>{
-                    return(
-                        <small>{types.type.name}</small>
-                )})}
             </div>
+            <div className="number"><small>0{id}</small></div>
         </div>
     )
 
