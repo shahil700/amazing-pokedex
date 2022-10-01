@@ -1,3 +1,4 @@
+import Divider from '@mui/material/Divider';
 import { useContext } from "react"
 import { PokemonsContext } from "../../PokemonContexts/PokemonContext"
 import { colorTypeGradients } from '../../utils/util.js'
@@ -24,22 +25,20 @@ const Pokeinfo = () => {
                 <div className='modal-content'onClick={ e => e.stopPropagation()}>
                     <div className="modal-header">
                         <h1>{Capitalize(pokeDex.name)}</h1>
-                        <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokeDex.id}.svg`} alt="" className="image" style={{ background: `linear-gradient(${finalColor[0]}, ${finalColor[1]})` }}/>
-                        <div className="description">
+                        <Divider orientation="vertical" variant="middle" flexItem />
+                        <h1>0{pokeDex.id}</h1>
+                    </div>   
+                    <div className="description"> 
+                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokeDex.id}.svg`} alt="" className="image" style={{ background: `linear-gradient(${finalColor[0]}, ${finalColor[1]})` }}/>
+                            <p className="truncated-text">
                             {
-                              description[pokeDex.id].flavor_text_entries.map((poke) => {
+                              [...new Set(description[pokeDex.id].flavor_text_entries.filter(poke => poke.language.name === 'en').map(poke => poke['flavor_text']))].map((poke) => {
                                     
-                                        if (poke.language.name === 'en') {  
-                                                                              
-                                                return <>{poke.flavor_text}</>
-                                            }
-                                            return <></>;
-                                            
-                
+                                return <>       {poke}</>
                             })
                             }
+                            </p>
                         </div>
-                    </div>    
                     <div className="modal-body">
                         {
                             pokeDex.abilities.map(poke=>{

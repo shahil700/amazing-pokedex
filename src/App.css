@@ -19,6 +19,7 @@ body {
   min-height: 100vh;
   padding: 3rem 0.5rem;
 }
+
 .pokemon-container {
   display: flex;
   flex-direction: column;

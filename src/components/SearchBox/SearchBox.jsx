@@ -8,7 +8,9 @@ const SearchBox = () =>{
 
     const {allPokemons} = useContext(PokemonsContext)
 
-    const [ searchField,setSearchField ] = useState(''); 
+    const [ searchField,setSearchField ] = useState('')
+    
+
     const onSearchChange = (e) => {
             const searchFieldString = e.target.value.toLocaleLowerCase();
             setSearchField(searchFieldString);

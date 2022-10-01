@@ -2,7 +2,8 @@ import { useContext } from 'react';
 import { PokemonsContext } from './PokemonContexts/PokemonContext';
 import Modal from './components/ModalDescription/ModalDescription';
 import SearchBox from './components/SearchBox/SearchBox'
-import MultipleSelectCheckmarks from './components/Filters/filterModal/filterModal.jsx'
+import FilterMethod from './components/Filters/FilterBox/FilterMethod.jsx';
+
 import './App.css'
 
 
@@ -14,8 +15,9 @@ const App = () => {
   return (
     <div className="app-container">
       <h1>Pokedex</h1>
-      {modalOpen && <Modal/>}
-      <SearchBox/>
+          {modalOpen && <Modal/>}
+          <FilterMethod/>
+        <SearchBox/>
     </div>
   );
 }
