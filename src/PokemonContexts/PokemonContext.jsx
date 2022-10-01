@@ -5,18 +5,7 @@ export const PokemonsContext = createContext({
   pokeDex: {},
   modalOpen: {},
   description: {},
-  expanded: {},
-  truncated: {},
-  isTypeSelected: {},
-  selectedType: {},
-  filterArr: {},
-  filterPokemons: {},
-  setFilterPokemons: () => {},
-  setFilterArr: () => {},
-  setSelectedType: () => {},
-  setIsTypeSelected: () => {},
-  setExpanded: () => {},
-  setTruncaded: () => {},
+  setAllPokemons:() => {},
   setModalOpen: () => {},
   setPokeDex: () => {},
   Capitalize: () => {},
@@ -25,27 +14,22 @@ export const PokemonsContext = createContext({
 });
 
 export const PokemonsProvider = ({ children }) => {
-    const[allPokemons, setAllPokemons] = useState([])
-    const [loadMore, setLoadMore] = useState('https://pokeapi.co/api/v2/pokemon?limit=25')
+    const [allPokemons, setAllPokemons] = useState([])
+    const [loadMore, setLoadMore] = useState('https://pokeapi.co/api/v2/pokemon?limit=30')
     const [pokeDex,setPokeDex]=useState()
     const [description, setDescription] = useState([])
     const [modalOpen, setModalOpen] = useState(false)
-    const [expanded, setExpanded] = useState(false)
-    const [truncated, setTruncated] = useState(false)
-    const [isTypeSelected, setIsTypeSelected] = useState(false)
-    const [selectedType, setSelectedType] = useState('')
-    const [filterArr,setFilterArr] = useState([])
-    const [ filterPokemons, setFilterPokemons] = useState([])
+    
 
 
   const getAllPokemons = async () => {
     const res = await fetch(loadMore)
-    const data = await res.json()
+    const data = await res.json() 
 
     //setLoadMore(data.next)
 
     async function createPokemonObject(results)  {
-    const pokemons = await Promise.all( results.map( async pokemon => {
+      const pokemons = await Promise.all( results.map( async pokemon => {
         const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`)
         const data =  await res.json()
         return data
@@ -53,23 +37,31 @@ export const PokemonsProvider = ({ children }) => {
       setAllPokemons(pokemons.sort((a, b) => (a.id > b.id) ? 1 : (b.id > a.id) ? -1 : 0))
     }
 
-    function createPokemonDescription(results)  {
-      results.forEach( async pokemon => {
+    async function createPokemonDescription(results)  {
+      const allDescription = await Promise.all(results.map( async pokemon => {
         const res = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemon.name}`)
         const data =  await res.json()
-        setDescription( currentList => [...currentList, data])
-        await description.sort((a, b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0))
-      })
+        return data
+      }))
+      setDescription(allDescription.sort((a, b) => (a.id > b.id) ? 1 : (b.id > a.id) ? -1 : 0))
     }
+
     if(loadMore.includes('gender')){
-    createPokemonObject(data.pokemon_species_details.map(pokemon => pokemon.pokemon_species))
-    createPokemonDescription(data.pokemon_species_details.map(pokemon => pokemon.pokemon_species))
+      createPokemonObject(data.pokemon_species_details.map(poke => poke.pokemon_species))
+      createPokemonDescription(data.pokemon_species_details.map(poke => poke.pokemon_species))
     }else{
       createPokemonObject(data.results)
       createPokemonDescription(data.results)
     }
-  }
 
+    if(loadMore.includes('type')){
+      createPokemonObject(data.pokemon.map(poke => poke.pokemon))
+      createPokemonDescription(data.pokemon.map(poke => poke.pokemon))
+    }else{
+      createPokemonObject(data.results)
+      createPokemonDescription(data.results)
+  }
+  }
  useEffect(() => {
   getAllPokemons()
  }, [loadMore])
@@ -79,10 +71,10 @@ export const PokemonsProvider = ({ children }) => {
   }
 
 
-  const value = { setLoadMore, filterPokemons,setFilterPokemons,filterArr,setFilterArr,isTypeSelected,selectedType,setIsTypeSelected,setSelectedType,allPokemons,pokeDex,setPokeDex,modalOpen,setModalOpen,Capitalize,description,setDescription,setExpanded,expanded,truncated,setTruncated};
+  const value = { setLoadMore,allPokemons,pokeDex,setPokeDex,modalOpen,setModalOpen,Capitalize,description,setDescription};
   return (
     <PokemonsContext.Provider value={value}>
       {children}
     </PokemonsContext.Provider>
-  );
-};
+  )
+}

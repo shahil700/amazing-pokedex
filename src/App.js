@@ -2,10 +2,9 @@ import { useContext } from 'react';
 import { PokemonsContext } from './PokemonContexts/PokemonContext';
 import Modal from './components/ModalDescription/ModalDescription';
 import SearchBox from './components/SearchBox/SearchBox'
-import FilterMethod from './components/Filters/FilterBox/FilterMethod.jsx';
-
+import GenderFilterMethod from './components/Filters/FilterBox/GenderFilterMethod.jsx';
+import TypeFilterMethod from './components/Filters/FilterBox/TypeFilterMethod';
 import './App.css'
-
 
 
 const App = () => {
@@ -16,7 +15,8 @@ const App = () => {
     <div className="app-container">
       <h1>Pokedex</h1>
           {modalOpen && <Modal/>}
-          <FilterMethod/>
+          <GenderFilterMethod/>
+          <TypeFilterMethod/>
         <SearchBox/>
     </div>
   );

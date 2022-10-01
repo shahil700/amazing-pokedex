@@ -1,48 +1,87 @@
 .modal {
-    position : fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background: rgba(46, 49, 86, 0.9);
-    backdrop-filter: blur(5px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(46, 49, 86, 0.9);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.modal-content{
-    width: 756px;
-    left: 378px;
-    background: #DEEDED;
+.modal-content {
+  max-width: 756px;
+  max-height: 1152px;
+  background: #deeded;
 }
 
-.modal-header, .modal-footer{
-    display: flex;
-    padding: 10px;
-    justify-content: center;
+.modal-header,
+.modal-footer {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
 }
 
-.modal-body{
-    display: flex;
-    padding: 10px;
+.modal-body {
+  padding: 10px;
+  width: 70%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+.modal-body .group {
+  color: black;
+  padding: 0.5rem;
+  font-size: 12px;
+  border-radius: 8px;
+  margin-left: 1rem;
+}
+.details-container {
+  margin-left: 43px;
+}
+.upper-content {
+  display: flex;
+  flex-direction: row;
+  margin: 41px;
+}
+.basic-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.image {
+  display: flex;
+  max-height: 277px;
+  max-width: 199px;
+  border: 1px dashed #2e3156;
+  border-radius: 8px;
 }
 
-.image{
-    display: flex;
-    height: 277px;
-    width: 199px;
-    border: 1px dashed #2E3156;
-    border-radius: 8px;
+.description {
+  font-size: 18px;
+  text-align: left;
+  display: inline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 24px; /* fallback */
+  max-height: 48px; /* fallback */
+  -webkit-line-clamp: 8; /* number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-width: 433px;
+  max-height: 200px;
 }
 
-.description{
-    display:flex;
-    font-size: 10px;
-    padding : 20px;
+.description > div {
+    display: inline;
+    padding-right: 10px;
 }
 
-.truncated-text {
-    padding : 15px;
+.description a {
+    position: absolute;
 }
-

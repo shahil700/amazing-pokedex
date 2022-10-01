@@ -1,4 +1,5 @@
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import { useContext } from "react";
 import { PokemonsContext } from "../../PokemonContexts/PokemonContext";
 import { colorTypeGradients } from '../../utils/util.js'
@@ -22,11 +23,17 @@ const PokemonCard = ({id, image, name, typess,pokemon }) => {
             setPokeDex(pokemon);
             setModalOpen(true); 
         }}>
-            <img src={image} alt={name} />
+            <LazyLoadImage
+                    alt={name}
+                    src={image}
+                    visibleByDefault={false}
+                    delayMethod={'debounce'}
+                    effect="blur"
+                />
             <div className="detail-wrapper">
                 <h3>{Capitalize(name)}</h3>
             </div>
-            <div className="number"><small>0{id}</small></div>
+            <div className="number"><small>{String(id).padStart(3, '0')}</small></div>
         </div>
     )
 

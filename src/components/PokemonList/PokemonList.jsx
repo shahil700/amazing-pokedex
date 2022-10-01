@@ -2,9 +2,7 @@
 import PokemonCard from '../PokemonCard/PokemonCard';
 
 const PokemonList = ({pokemons}) => {
- 
 
-        
         return (<div className='pokemon-container'>
                     <div className='all-container'>{pokemons.map( (pokemonStats, index) => 
                                 <PokemonCard
