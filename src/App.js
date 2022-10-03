@@ -6,8 +6,9 @@ import SearchBox from "./components/SearchBox/SearchBox";
 import { PokemonsContext } from "./PokemonContexts/PokemonContext";
 import WindowFilterWidth from './utils/WindowFilterWidth'
 
+
 const App = () => {
-  const { modalOpen } = useContext(PokemonsContext);
+  const { modalOpen, mobileModalOpen } = useContext(PokemonsContext);
   const { width } = WindowFilterWidth()
 
   return (
@@ -15,13 +16,14 @@ const App = () => {
       <div className="pokedex-heading">
         <h1>Pokédex</h1>
         <Divider orientation="vertical" variant="middle" flexItem />
-        {width < 700 && <Divider orientation="horizontal" variant="middle" flexItem />}
+        {width < 600 && <Divider orientation="horizontal" variant="middle" flexItem />}
         <span className="subheading">
           Search for any Pokémon that exists on the planet
         </span>
       </div>
 
       {modalOpen && <Modal />}
+      
       <SearchBox />
     </div>
   );

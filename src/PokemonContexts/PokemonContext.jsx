@@ -6,6 +6,8 @@ export const PokemonsContext = createContext({
   modalOpen: {},
   description: {},
   loadMore: {},
+  mobileModalOpen: {},
+  setMobileModalOpen: () => {},
   setAllPokemons: () => {},
   setModalOpen: () => {},
   setPokeDex: () => {},
@@ -17,11 +19,12 @@ export const PokemonsContext = createContext({
 export const PokemonsProvider = ({ children }) => {
   const [allPokemons, setAllPokemons] = useState([]);
   const [loadMore, setLoadMore] = useState(
-    "https://pokeapi.co/api/v2/pokemon?limit=30"
+    "https://pokeapi.co/api/v2/pokemon?limit=200"
   );
   const [pokeDex, setPokeDex] = useState();
   const [description, setDescription] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [mobileModalOpen, setMobileModalOpen] = useState(false)
 
   const getAllPokemons = async () => {
     const res = await fetch(loadMore);
@@ -88,6 +91,8 @@ export const PokemonsProvider = ({ children }) => {
   };
 
   const value = {
+    mobileModalOpen,
+    setMobileModalOpen,
     setLoadMore,
     allPokemons,
     pokeDex,
