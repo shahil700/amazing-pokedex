@@ -20,6 +20,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 25px 16px;
+  justify-content: center;
 }
 .thumb-container {
   display: flex;
@@ -124,5 +125,11 @@ h3 {
     flex-direction: column;
     padding: 1px 15px;
     box-sizing: border-box;
+  }
+  .all-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px 16px;
+    justify-content: center;
   }
 }

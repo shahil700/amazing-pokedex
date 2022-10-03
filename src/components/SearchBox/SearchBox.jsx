@@ -34,7 +34,7 @@ const SearchBox = () => {
               <input
                 className="search-box"
                 type="search"
-                placeholder="Name or Number"
+                placeholder="Name"
                 onChange={onSearchChange}
               />
             </div>
