@@ -1,8 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -10,36 +10,25 @@ body {
   text-align: center;
 }
 
-
 .app-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 3rem 0.5rem;
+  padding: 50px 75px;
 }
 
-.pokemon-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
 .all-container {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  gap: 25px 16px;
 }
 .thumb-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem 0 ;
+  padding: 1.5rem 0;
   margin: 0.3rem;
-  border: 1px dashed #2E3156;
+  border: 1px dashed #2e3156;
   border-radius: 8px;
   min-width: 160px;
   text-align: center;
@@ -51,7 +40,7 @@ h3 {
 .thumb-container .number {
   border-radius: 1rem;
   padding: 0.2rem 0.4rem;
-  background-color: rgba(255,255,255,0.3);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 .thumb-container img {
   width: 120px;
@@ -67,7 +56,7 @@ h3 {
 }
 .detail-wrapper button {
   color: rgb(22, 22, 22);
-  padding: .5rem;
+  padding: 0.5rem;
   margin-top: 1rem;
   border: none;
   border-radius: 0.2rem;
@@ -75,19 +64,17 @@ h3 {
   background-color: rgba(0, 0, 0, 0.185);
 }
 
-
-
-.filter{
-    -webkit-appearance: none;
-    margin-left: 20px;
-    border: none;
-    border-radius: 8px;
-    outline: none;
-    padding: 10px;
-    width: 194px;
-    height: 57px;
-    margin-bottom: 30px;
-    background-color: #c9dde2;
+.filter {
+  -webkit-appearance: none;
+  margin-left: 20px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  padding: 10px;
+  width: 194px;
+  height: 57px;
+  margin-bottom: 30px;
+  background-color: #c9dde2;
 }
 
 .app-container .openModalBtn {
@@ -98,4 +85,43 @@ h3 {
   background-color: cornflowerblue;
   color: white;
   cursor: pointer;
+}
+
+.pokedex-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 600px;
+}
+.subheading {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.filter__items {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.filter-select {
+  border: none;
+  border-radius: 8px;
+  padding: 13px;
+  background-color: #c9dde2;
+  min-height: 57px;
+  max-width: 194px;
+}
+@media screen and (max-width: 480px) {
+  .pokedex-heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 600px;
+  }
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1px 15px;
+  }
 }
